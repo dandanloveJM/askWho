@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>用户登录</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/iconfont.css" rel="stylesheet">
+<link rel="stylesheet" href="css/login.css">
+<!-- LeanCloud -->
+    <script src="../dist/av.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="content">
+    	<div class="title">
+    		<h3>使用ID登录官网</h3>
+    	</div>
+		<div class="list">
+			<form action="" name="form" id="form">
+				<ul>
+					<li class="username">
+						<span class="user iconfont icon-accountfilling"></span>
+						<input type="text" placeholder="用户名" name="username" id="username">	
+					</li>
+					<li class="password">
+						<span class="user iconfont icon-key"></span>
+						<input type="password" placeholder="密码" name="password" id="password">
+					</li>
+					<li class="tip">
+						<a href="register.html">点击注册ID</a>
+					</li>
+					<li class="login">
+						<input type="submit" class="submit" id="submit" value="登录">
+					</li>
+				</ul>
+			</form>
+		</div>
+    </div>
+</div>
+    
+</body>
+<script>
+	var AV
+    //初始化AV
+    const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
+    const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
+    const region = 'cn';
+    
+    AV.init({ appId, appKey, region });
+
+	function login() {
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		// LeanCloud - 登录
+		// https://leancloud.cn/docs/leanstorage_guide-js.html#用户名和密码登录
+		AV.User.logIn(username, password).then(function (loginedUser) {
+				window.location.href = "index.html";
+			}, function (error) {
+				alert(JSON.stringify(error));
+		});
+};
+
+	$(function() {
+		$("#form").on('submit', function(e) {
+			e.preventDefault();
+			login();
+		});
+	});
+
+</script>
+</html>

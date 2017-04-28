@@ -1,0 +1,200 @@
+* {
+        padding: 0;
+        margin: 0;
+        font-family: 'Microsoft Yahei'
+    }
+    .container {
+        background: #EDEDEF;
+        margin: 0 auto;
+       
+    }
+    .layout {
+        width: 1100px;
+        margin: 0 auto;
+    }
+    a {
+        text-decoration: none;
+    }
+    .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    ul, li {
+        list-style: none;
+    }
+    
+    .actions span {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .main {
+        width: 700px;
+        float: left;
+    }
+    .content {
+        margin-top: 20px;
+    }
+     /*顶部栏*/
+    .search {
+        background: #fff;
+        border-bottom: 1px solid #e7eaf1;
+        height: 55px;
+        padding: 0 20px;
+        position: relative;
+
+    }
+    .search .title {
+        line-height: 52px;
+        color: #0F88EB;
+        position: absolute;
+        left: 100px;
+        letter-spacing: 4px;
+
+    }
+    /*顶部的搜索框*/
+    .search-bar {
+        width: 340px;
+        transition: all 0.3ms;
+        background: #f7f8fa;
+        height: 40px;
+        line-height: 34px;
+        border-style: none;
+        border: 1px solid #ccc;
+        top: 7px;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 10px;
+        transition: all 0.3s;
+    }
+    .search-button {
+        display: inline-block;
+        margin-left: 30px;
+        margin-top: 10px;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #000;
+    }
+    .search-bar:focus {
+        width: 400px;
+        border: 1px solid #0F88EB;
+    }
+    .include-searchbar {
+        padding-top: 6px;
+        float: left;
+        position: relative;
+        
+        margin-left: 205px;
+    }
+    .icon-search {
+        position: absolute;
+        top: 17px;
+        right: 6px;
+        color:#0F88EB;
+    }
+    .corner {
+        display: inline-block;
+        margin-left: 30px;
+        color: #000;
+    }
+    .first {
+        margin-left: 60px;
+    }
+    /*小组*/
+.sidebar-group {
+    
+    margin-left: 800px;
+
+}
+ .sidebar-group h5 {
+     font-size: 20px;
+     line-height: 36px;
+     height: 36px;
+     background: #fff;
+     padding: 10px;
+ }
+  .sidebar-group a {
+      color: orangered;
+  }
+  .groupBox {
+      border: 1px solid #e7eaf1;
+      box-shadow: 0 1px 3px 0 rgba(0,37,55,.05);
+      background: #fff;
+      width: 128px;
+      margin-right: 10px;
+      height: 128px;
+      margin-bottom: 10px;
+      padding-top: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      float: left;
+  }
+   .groupBox>p {
+       margin: 0;
+   }
+   /*标签*/
+    .topics {
+        display: inline-block;
+        height: 30px;
+        margin: 3px 2px;
+        padding: 0 12px;
+        font-size: 14px;
+        line-height: 30px;
+        color: #3e7ac2;
+        background: #eef4fa;
+        border-radius: 100px;
+    }
+   /*问题列表*/
+  .questions {
+      background: #fff;
+        border: 1px solid #e7eaf1;
+        box-shadow: 0 1px 3px 0 rgba(0,37,55,.05);
+        width: 700px;
+  }
+  .questions>li {
+      padding: 20px;
+      border-bottom: 1px solid #999;
+  }
+  em {
+      color: red;
+      font-style: normal;
+      font-weight: 600;
+  }
+  .title a {
+      color: #259;
+      font-size: 18px;
+      font-weight: bold;
+  }
+  .author-line {
+      line-height: 2;
+  }
+  .author {
+      color: #000;
+
+  }
+  .icon-star {
+      color: #f54806;
+  }
+  /*悬赏*/
+  .money {
+     color: #EA414E;
+  }
+  .money .icon-trophy {
+      color: #FFB033;
+  }
+  .answer {
+      line-height: 2;
+  }
+  .icon-thumbs-up {
+      color: #FF7170;
+  }
+  .tag {
+      color: #B39999;
+  }
+  .groupBox>a {
+      color: #000;
+  }

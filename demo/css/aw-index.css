@@ -1,0 +1,179 @@
+* {
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        margin: 0 auto;
+
+    }
+    .title {
+        display: block;
+    }
+    .layout {
+        width: 1100px;
+        margin: 0 auto;
+    }
+    .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    
+    .search {
+       text-align: center;
+        padding-top: 100px;
+        margin: 0 auto; 
+    }
+    
+    
+    /*标签*/
+    .topics {
+        display: inline-block;
+        
+        margin: 3px 2px;
+        padding: 0 12px;
+        font-size: 14px;
+        line-height: 30px;
+        color: #3e7ac2;
+        background: #eef4fa;
+       
+    }
+    /*你加入的小组*/
+    .yourGroup {
+         margin-top: 30px;
+         width: 80%;
+         margin-left: auto;
+         margin-right: auto;
+         text-align: center;
+         border: 1px solid #dbdde0;
+         box-shadow: 0 1px 3px 0 rgba(0,37,55,.05);
+
+    }
+    .yourGroup h5 {
+        height: 50px;
+        padding: 0 20px;
+        border-bottom: 1px solid #f0f2f7;
+        box-sizing: border-box;
+        line-height: 50px;
+        font-size: 20px;
+        
+    }
+    .groupBox {
+        border: 1px solid #0F88EB;
+        float: left;
+        border-radius: 10px;
+    }
+    /*退出登录*/
+    ul, li {
+        list-style: none;
+    }
+    .login ul {
+        float: right;
+    }
+    .login li {
+        float: left;
+        margin-right: 30px;
+    }
+    .login a {
+        text-decoration: underline;
+        color: #000;
+    }
+     /*课程表*/
+     table td>a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+    }
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin-left: 75px;
+    }
+    td {  
+            border: solid #CCC 1px;
+            padding: 10px;
+    } 
+    td>a p {
+        line-height: 2;
+    } 
+    /*搜索框*/
+    .search {
+        background: url('../img/bg.png');
+        height: 290px;
+        background-position: center;
+        padding-top: 35px;
+        margin-top: 100px;
+        position: relative;
+    }
+    .search > .title {
+        font-family: "Microsoft Yahei";
+        font-size: 50px;
+        color: #0f88eb;
+        letter-spacing: 5px;
+        line-height: 1.6;
+        position: absolute;
+        top: -5px;
+        left: 456px;
+    }
+    .input {
+        padding: 9px 7px;
+        border: 1px solid #b8b8b8;
+        height: 28px;
+        line-height: 28px;
+        width: 480px;
+        font-size: 16px;
+        margin-top: 78px;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 18px;
+        color: #fff;
+        border-style: none;
+        border: 1px solid #0F88EB;
+        background: #0F88EB;
+        text-decoration: none;
+    }
+
+    .input:focus {
+        border: 1px solid #0F88EB;
+    }
+    .search>.intro {
+        font-family: "Microsoft Yahei";
+        font-size: 20px;
+        position: absolute;
+        left: 400px;
+        top: 66px;
+    }
+    /*课程表*/
+    .tr1 {
+        background: rgba(15, 136, 235, 0.57);
+        font-size: 18px;
+
+    }
+    .tr1>td {
+        line-height: 2;
+        color: #fff;
+        font-weight: 900;
+    }
+    /*搜索建议*/
+    .suggestion {
+        
+        width: 492px;
+        margin-left: 247px;
+    }
+    .suggestion > ul {
+        border: 1px solid #999;
+        list-style: none;
+        text-align: left;
+    }
+    .suggestion > ul>li {
+        line-height: 2;
+        padding-left: 10px;
+        background: #fff;
+    }
+    .suggestion > ul>li> a {
+        text-decoration: none;
+        color: #333;
+    }

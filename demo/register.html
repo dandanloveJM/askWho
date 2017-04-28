@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>用户注册</title>
+
+<link href="css/zhuce.css" rel="stylesheet">
+<link rel="stylesheet" href="css/iconfont.css">
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/register.css">
+<!-- LeanCloud -->
+    <script src="../dist/av.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="content">
+    	<div class="title">
+    		<h3>注册ID</h3>
+    	</div>
+		<div class="list">
+			<form id="form" name="form" method="post" class="form-signup" >
+				<ul>
+					<li class="username">
+						<span class="user iconfont icon-accountfilling"></span>
+						<input type="text" placeholder="用户名" name="username" id="userid" >	
+					</li>
+					<li class="email">
+						<span class="user iconfont icon-youxiang"></span>
+						<input type="email" placeholder="邮箱" name="email" id="email" >
+						<span class="hint" id="checkemail">邮箱格式错误</span>
+					</li>
+					<li class="password">
+						<span class="user iconfont icon-key"></span>
+						<input type="password" placeholder="密码" name="passwd" id="passwd">
+						<span class="hint" id="checkpsw">密码格式错误</span>
+						<div class="pwdhint" id="hints">密码长度6-16位，可以是数字、字母等任意字符</div>
+					</li>
+					<li class="password">
+						<span class="user iconfont icon-key"></span>
+						<input type="password" placeholder="再次输入密码" name="repasswd" id="repasswd">
+						<span class="hint" id="checkpsw1">密码格式错误</span>
+						<span class="hint" id="checkpsw2">两次密码输入不一样</span>
+						<div class="pwdhint" id="hintss">密码长度6-16位，可以是数字、字母等任意字符</div>
+					</li>
+					
+					
+					<li class="login">
+						<input type="submit" id="submit" class="submit" value="立即注册">
+					</li>
+				</ul>
+			</form>
+		</div>
+		<div class="footer">
+			<a href="login.html">如果你已拥有ID，可点此<span>登录</span></a>
+		</div>
+    </div>
+</div>
+    
+</body>
+<script  type="text/javascript" src="js/login.js"></script>
+<script>
+	var AV
+    //初始化AV
+    const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
+    const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
+    const region = 'cn';
+    
+    AV.init({ appId, appKey, region });
+
+    //注册
+    
+    
+    function signup() {
+        var username = $('#userid').val();
+        var password = $('#passwd').val();
+        var email = $('#email').val();
+        console.log(username)
+        // LeanCloud - 注册
+        // https://leancloud.cn/docs/leanstorage_guide-js.html#注册
+        var user = new AV.User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.signUp().then(function (loginedUser) {
+		
+            window.location.href = "./personal-info.html";
+			
+        }, (function (error) {
+            alert(JSON.stringify(error));
+        }));
+	};
+	
+	
+
+    $('#form').on('submit', function(e){
+		console.log('提交')
+		e.preventDefault();
+        signup();
+	})
+</script>
+</html>

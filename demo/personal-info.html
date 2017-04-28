@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>完善更多信息</title>
+  <!-- LeanCloud -->
+    <script src="../dist/av.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        background: #EDEDEF;
+    }
+    .form {
+        width: 900px;
+        margin: 0 auto;
+        background: #fff;
+    }
+    .form header {
+        background: #17B1F7;
+        color: #fff;
+        padding: 24px;
+        text-align: center;
+    }
+    .content {
+        padding: 60px;
+    }
+    .input>label {
+        display: block;
+        line-height:2;
+
+    }
+    .name {
+        width: 80%;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        line-height: 36px;
+        font-size: 16px;
+    }
+    .input > select {
+        width: 80%;
+        padding: 10px 5px;
+        font-size: 16px;
+    }
+    .button {
+        text-align: center;
+    }
+    .course {
+        display: inline-block;
+        text-decoration: none;
+        color:white;
+        background: #17B1F7;
+        padding: 15px 20px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <header>
+                <h3>完善更多身份信息</h3>
+            </header>
+            <div class="content">
+                <div class="input">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" class="name">
+                </div>
+                <div class="input">
+                    <label for="university">所在学校</label>
+                    <select name="university" id="university">
+                        <option value="znuel">中南财经政法大学</option>
+                    </select>
+                    
+                </div>
+                <div class="input">
+                    <label for="college">所在学院</label>
+                    <select name="college" id="college">
+                        <option value="gc">信息与安全工程学院</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="major">所在专业</label>
+                    <select name="major" id="major">
+                        <option value="imis">信息管理与信息系统</option>
+                        <option value="jk">计算机科学与技术</option>
+                        <option value="ds">电子商务</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="class">班级</label>
+                    <select name="class" id="class">
+                        <option value="one">1班</option>
+                        <option value="two">2班</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="enrollment">入学时间</label>
+                    <select name="enrollment" id="enrollment">
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="term">当前学期</label>
+                    <select name="term" id="term">
+                        <option value="2017-spring">2017春</option>
+                        <option value="2016-autumn">2016秋</option>
+                        <option value="2016-spring">2016春</option>
+                        <option value="2015-autumn">2015秋</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button">
+                <a href="#" class="course">导入课表</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+     //初始化AV
+    const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
+    const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
+    const region = 'cn';
+    
+    AV.init({ appId, appKey, region });
+    
+    function setName(){
+        var realName = $('#name').val()
+        console.log(realName)
+        var currentUser = AV.User.current()
+        if(currentUser){
+            let currentID = currentUser.id
+            User = AV.Object.createWithoutData('_User', currentID)
+            User.set('realName', realName)
+            User.save()
+            
+            
+           User.save().then(function(){
+              
+
+               	var UserInfo = AV.Object.extend('UserInfo')
+			    var userInfo = new UserInfo()
+			    userInfo.set('user', User)
+                userInfo.set('username', realName)
+                userInfo.save().then(function(){
+                   
+                    window.location.href = './index.html'
+                })
+
+                
+           })
+        }
+
+    }
+
+    $('.course').on('click', function(e){
+        e.preventDefault()
+        setName()
+
+        
+
+    })
+    
+</script>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>提问</title>
+  <!-- LeanCloud -->
+    <script src="../dist/av.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+    <!-- handlebars -->
+    <script src="./js/handlebars-v4.0.5.js"></script>
+
+    <link rel="stylesheet" href=".\css\font-awesome.css">
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Microsoft Yahei'
+    }
+    .container {
+        background: #EDEDEF;
+        margin: 0 auto;
+       
+    }
+    .layout {
+        width: 1100px;
+        margin: 0 auto;
+        
+    }
+    a {
+        text-decoration: none;
+    }
+    .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    ul, li {
+        list-style: none;
+    }
+    
+    .actions span {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .main {
+        width: 700px;
+        float: left;
+    }
+    .content {
+        margin-top: 20px;
+    }
+     /*顶部栏*/
+    .search {
+        background: #fff;
+        border-bottom: 1px solid #e7eaf1;
+        height: 55px;
+        padding: 0 20px;
+        position: relative;
+
+    }
+    .search .title {
+        line-height: 52px;
+        color: #0F88EB;
+        position: absolute;
+        left: 100px;
+        letter-spacing: 4px;
+
+    }
+    /*顶部的搜索框*/
+    .search-bar {
+        width: 340px;
+        transition: all 0.3ms;
+        background: #f7f8fa;
+        height: 40px;
+        line-height: 34px;
+        border-style: none;
+        border: 1px solid #ccc;
+        top: 7px;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 10px;
+        transition: all 0.3s;
+    }
+    .search-button {
+        display: inline-block;
+        margin-left: 30px;
+        margin-top: 10px;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #000;
+    }
+    .search-bar:focus {
+        width: 400px;
+        border: 1px solid #0F88EB;
+    }
+    .include-searchbar {
+        padding-top: 6px;
+        float: left;
+        position: relative;
+        
+        margin-left: 205px;
+    }
+    .icon-search {
+        position: absolute;
+        top: 17px;
+        right: 6px;
+        color:#0F88EB;
+    }
+    .corner {
+        display: inline-block;
+        margin-left: 30px;
+        color: #000;
+    }
+    .first {
+        margin-left: 60px;
+    }
+    
+    /*没有答案*/
+   .noResult {
+       background: url('./img/noResult.jpg');
+       background-size: cover;
+       min-height: 600px;
+       text-align: center;
+       padding-top: 50px;
+   }
+   .bigger-button {
+       display: inline-block;
+       background: #0F88EB;
+       padding: 20px 50px;
+       font-size: 20px;
+       color: white;
+       margin-top: 40px;
+       border: 1px solid;
+
+   }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search clearfix">
+            <div class="layout">
+                <a href="index.html" ><span class="title icon-lightbulb icon-2x">问谁</span></a>
+                <div class="include-searchbar">
+                    <input id="search-bar" type="text" placeholder="请输入搜索内容" class="search-bar">
+                    <a herf="#" class="icon-search"></a>    
+                </div>
+                <a class="search-button" id="search">搜索</a>
+                <a class="search-button" id="ask" href="ask.html">提问</a>
+
+                <a href="selfCenter.html" class="first corner selfCenter">我的个人中心</a>
+                <a href="#" class="corner logOut">退出登陆</a>
+            </div>      
+        </div>
+
+        <div class="content clearfix">
+            <div class="layout">
+               <div class="noResult">
+                 <p class="tip">Oops!翻箱倒柜也没有找到你满意的问题，试试看提问吧！</p>
+                 <a class="bigger-button search-button" id="ask" href="ask.html">提问</a>
+               </div>
+            </div>
+       
+        
+    </div>
+
+</body>
+<script>
+    /*为了使用上面的搜索框*/
+    //初始化AV
+    const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
+    const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
+    const region = 'cn';
+    
+    AV.init({ appId, appKey, region });
+
+    function searchUrl(){
+        var url = 'searchResult2.html?'
+        var searchContent = $('#search-bar').val()
+        if(!searchContent){
+            window.location.href = 'noresult.html'
+        }
+        var parasArray = searchContent.split(' ')
+        for(let i = 0; i < parasArray.length; i++){
+            url += 'para'+ i + '=' +  parasArray[i] 
+            if(i<parasArray.length-1){
+                url += '&'
+            }
+        }
+        
+        
+        window.location.href = url
+
+    }
+    $('#search-bar').keydown(function(e){
+        if(e.which == 13){
+            e.preventDefault()
+            searchUrl()
+            
+        }
+
+    })
+    $('#search').on('click', function(e){
+        e.preventDefault()
+        searchUrl()
+    })
+
+    /*退出登录*/
+    $('.logOut').on('click', function(){
+         AV.User.logOut();
+         window.location.href = "register.html";
+
+    })
+</script>
+</html>

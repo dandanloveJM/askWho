@@ -1,0 +1,98 @@
+@charset "UTF-8";
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Microsoft YaHei";
+}
+li {
+	list-style: none;
+}
+.body {
+	background:#F4F4F4;
+}
+.wrap {
+	min-height: 800px;
+	background:#f4f4f4;
+}
+.content {
+	width: 450px;
+	height:500px;
+	border:1px solid #dadada;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -225px;
+	margin-top:-215px;
+	border-radius: 10px;
+	box-shadow: 0 9px 30px -6px rgba(0,0,0,0.2);
+	background: white;
+}
+.title {
+	height: 61px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	padding-top: 18px;
+	background: #FBFBFB;
+	border: inherit;
+	margin-bottom: 20px;
+	border-radius: 8px;
+}
+.title h3 {
+	letter-spacing: 3px;
+}
+.list li input {
+	line-height: 46px;
+	height: 46px;
+	width: 368px;
+	border-radius:10px;
+	outline: none;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding-left: 52px;
+	box-sizing: border-box;
+	font-size: 18px;
+	font-family: "Microsoft YaHei";
+	box-shadow: inset 0 8px 8px -7px rgba(0,0,0,0.2);
+	opacity: 0.618;
+}
+.list li.email {
+	position: relative;
+}
+li.password {
+	position: relative;
+}
+.list li input:hover {
+	opacity: 1;
+
+}
+
+.list li input:focus {
+	border: 1px solid #648DE0;
+}
+.user {
+	height: 46px;
+	line-height: 46px;
+	position: absolute;
+	left: 56px;
+	padding-right: 10px;
+	border-right: 1px solid #ccc;
+	color: #9C9C9C
+
+}
+.list li input.submit {
+	padding-left: 0px;
+	background: #648DE0;
+	color: white;
+}
+
+
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-12-10 15:14:36
+ * @version $Id$
+ */

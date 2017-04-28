@@ -1,0 +1,267 @@
+* {
+        padding: 0;
+        margin: 0;
+        font-family: 'Microsoft YaHei';
+    }
+    .container {
+        background: #EDEDEF;
+        margin: 0 auto;
+        
+    }
+    .layout {
+        width: 1100px;
+        margin: 0 auto;
+    }
+    a {
+        text-decoration: none;
+    }
+    ul, li {
+        list-style: none;
+    }
+    .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    /*顶部栏*/
+    .search {
+        background: #fff;
+        border-bottom: 1px solid #e7eaf1;
+        height: 55px;
+        padding: 0 20px;
+        position: relative;
+
+    }
+    .search .title {
+        line-height: 52px;
+        color: #0F88EB;
+        position: absolute;
+        left: 100px;
+        letter-spacing: 4px;
+
+    }
+    /*顶部的搜索框*/
+    .search-bar {
+        width: 340px;
+        transition: all 0.3ms;
+        background: #f7f8fa;
+        height: 40px;
+        line-height: 34px;
+        border-style: none;
+        border: 1px solid #ccc;
+        top: 7px;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 10px;
+        transition: all 0.3s;
+    }
+    .search-button {
+        margin-left: 30px;
+        margin-top: 10px;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .search-bar:focus {
+        width: 500px;
+        border: 1px solid #0F88EB;
+    }
+    .include-searchbar {
+        padding-top: 6px;
+        float: left;
+        position: relative;
+        
+        margin-left: 205px;
+    }
+    .icon-search {
+        position: absolute;
+        top: 17px;
+        right: 6px;
+        color:#0F88EB;
+    }
+    /*标签*/
+    .topics {
+        display: inline-block;
+        height: 30px;
+        margin: 3px 2px;
+        padding: 0 12px;
+        font-size: 14px;
+        line-height: 30px;
+        color: #3e7ac2;
+        background: #eef4fa;
+        border-radius: 100px;
+    }
+    /*私信*/
+    .message {
+        background: #0F88EB;
+        padding: 10px 15px;
+        color: #fff;
+        border: 1px solid #0F88EB;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+
+    }
+    /*小组成员列表*/
+    .groupMember {
+        background: #fff;
+        border: 1px solid #e7eaf1;
+        box-shadow: 0 1px 3px 0 rgba(0,37,55,.05);
+        float: left;
+        min-width: 250px;
+    }
+    .groupMember header {
+        height: 50px;
+        padding: 0 20px;
+        border-bottom: 1px solid #f0f2f7;
+        box-sizing: border-box;
+        line-height: 50px;
+        background: #fff;
+        text-align: center;
+    }
+    .memberList {
+        text-align: center;
+    }
+    .memberList > li {
+        padding: 16px;
+        border-bottom: 1px solid #ccc;
+    }
+    .memberList > li .name {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 2;
+        color: #000;
+    }
+    .badge {
+        line-height: 2.2;
+    }
+    .badge>.icon-star {
+        color: #f54806
+    }
+    /*问题列表*/
+    .questions {
+        background: #fff;
+        border: 1px solid #e7eaf1;
+        box-shadow: 0 1px 3px 0 rgba(0,37,55,.05);
+        margin-left: 300px;
+        width: 70%;
+        
+    }
+    .questions header {
+        height: 50px;
+        padding: 0 20px;
+        border-bottom: 1px solid #f0f2f7;
+        box-sizing: border-box;
+        line-height: 50px;
+        background: #fff;
+        text-align: center;
+    }
+    .questionsList >li {
+        padding: 20px;
+        border-bottom: 1px solid #888;
+    }
+    .questionsList >li a.title {
+        color: #259;
+        
+        font-size: 20px;
+    }
+      a.title:hover {
+        text-decoration: underline;
+     }
+     .answerDetail>p {
+         line-height: 2;
+     }
+     .answerDetail>p .to {
+         font-weight: 900;
+     }
+     .questionsList >li>span {
+         display: inline-block;
+         margin-right: 10px;
+     }
+     .icon-thumbs-up {
+         color: #FF7170;
+     }
+     .dialog {
+         position: fixed;
+         background: #fff;
+         width: 400px;
+         border: 1px solid #000;
+         border-radius: 2px;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         box-shadow: 0 0 0 1000px rgba(0,0,0,.4);
+         opacity: 0;
+         transition: all .5s;
+     }
+     .modal-title {
+         margin-top: 40px;
+         font-size: 24px;
+         font-weight: 500;
+         color: #262626;
+         text-align: center;
+     }
+     .modal-content {
+         padding: 0 24px 32px;
+         margin-top: 24px;
+         font-size: 14px;
+         line-height: 1.7;
+         opacity: 1;
+     }
+     .newdialog {
+         min-height: 274px;
+         box-sizing: border-box;
+     }
+     .receiver {
+         height: 36px;
+         margin-top: 8px;
+         line-height: 36px;
+     }
+     .receiverInfo {
+         height: 36px;
+         margin-top: 8px;
+         line-height: 36px;
+
+     }
+     .record {
+         color: #1d6eb5;
+         margin-left: 216px;
+     }
+     .record:hover {
+         text-decoration: underline;
+     }
+     .textarea {
+         padding: 4px 10px;
+         font-size: 14px;
+         background: #fff;
+         border: 1px solid #e7eaf1;
+         border-radius: 3px;
+         box-sizing: border-box;
+         width: 100%;
+     }
+     .textarea:focus {
+         border: 1px solid #9fadc7;
+         background: #fff;
+     }
+     .send {
+    
+         width: 100px;
+         color: #fff;
+         background: #0f88eb;
+         padding: 0 16px;
+         font-size: 14px;
+         line-height: 32px;
+         text-align: center;
+         cursor: pointer;
+         border-radius: 3px;
+         border-style: none;
+         margin-top: 30px;
+     }
+     .close {
+         margin-left: 130px;
+     }

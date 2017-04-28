@@ -1,0 +1,101 @@
+@charset "UTF-8";
+ *{
+	margin: 0;
+	padding: 0;
+}
+.body {
+	background:#F4F4F4;
+}
+.wrap {
+	min-height: 800px;
+	background:#f4f4f4;
+}
+.content {
+	width: 450px;
+	height:500px;
+	border:1px solid #dadada;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -225px;
+	margin-top:-215px;
+	border-radius: 10px;
+	box-shadow: 0 9px 30px -6px rgba(0,0,0,0.2);
+	background: white;
+}
+.title {
+	background: url(../images/logo.png) no-repeat;
+	background-size: 160px 160px;
+	height: 160px;
+	background-position: center center;
+	position: relative;
+}
+.title h3 {
+	position: absolute;
+	bottom: 0;
+	font-family: "Microsoft YaHei";
+	left: 145px;
+	letter-spacing: 3px;
+
+}
+.list {
+	margin-top: 20px;
+}
+.list li {
+	list-style-type: none;
+}
+.list li input {
+	line-height: 46px;
+	height: 46px;
+	width: 368px;
+	border-radius:10px;
+	outline: none;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding-left: 52px;
+	box-sizing: border-box;
+	font-size: 18px;
+	font-family: "Microsoft YaHei";
+	box-shadow: inset 0 8px 8px -7px rgba(0,0,0,0.2);
+	opacity: 0.618;
+}
+.list li.password input {
+	margin-bottom: 30px;
+}
+.list li input:hover {
+	opacity: 1;
+
+}
+.list li input:focus {
+	border: 1px solid #648DE0;
+}
+.user {
+	height: 46px;
+	line-height: 46px;
+	position: absolute;
+	left: 56px;
+	padding-right: 10px;
+	border-right: 1px solid #ccc;
+	color: #9C9C9C
+
+}
+.list li input.submit {
+	padding-left: 0px;
+	background: #648DE0;
+	color: white;
+}
+.tip {
+	text-align: center;
+}
+.tip a {
+	text-decoration: none;
+	color: #648DE0;
+	font-family: "Microsoft YaHei";
+	font-size: 15px;
+	text-align: right;
+	display: inline-block;
+	margin-bottom: 5px;
+}

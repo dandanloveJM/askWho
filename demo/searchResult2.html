@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>搜索结果</title>
+  <!-- LeanCloud -->
+    <script src="../dist/av.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+    <!-- handlebars -->
+    <script src="./js/handlebars-v4.0.5.js"></script>
+
+    <link rel="stylesheet" href=".\css\font-awesome.css">
+    <link rel="stylesheet" href="./css/aw-sr.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search clearfix">
+            <div class="layout">
+                <a href="index.html" ><span class="title icon-lightbulb icon-2x">问谁</span></a>
+                <div class="include-searchbar">
+                    <input id="search-bar" type="text" placeholder="请输入搜索内容" class="search-bar">
+                    <a herf="#" class="icon-search"></a>    
+                </div>
+                <a class="search-button" id="search">搜索</a>
+                <a class="search-button" id="ask" href="ask.html">提问</a>
+
+                <a href="selfCenter.html" class="first corner selfCenter">我的个人中心</a>
+                <a href="#" class="corner logOut">退出登陆</a>
+            </div>      
+        </div>
+
+        <div class="content clearfix">
+            <div class="layout">
+               <div class="main">
+                   <ul class="questions">
+                   
+                   </ul>
+                
+
+               </div>
+              
+              <div class="sidebar-group clearfix">
+                <h5>与<a href="#">高数下</a>相关小组为</h5>
+                <div class="groupBox">
+                    <a href="groupDetail.html">
+                        <p class="course">高等数学下</p>
+                        <p class="teacher">童丽珍</p>
+                        <p class="term">2017春</p>
+                    </a>
+                </div>
+                <div class="groupBox">
+                    <a href="groupDetail.html">
+                        <p class="course">高等数学下</p>
+                        <p class="teacher">童丽珍</p>
+                        <p class="term">2016春</p>
+                    </a>
+                </div>
+                <div class="groupBox">
+                    <a href="groupDetail.html">
+                        <p class="course">高等数学下</p>
+                        <p class="teacher">马忠明</p>
+                        <p class="term">2016春</p>
+                    </a>
+                </div>
+                <div class="groupBox">
+                    <a href="groupDetail.html">
+                        <p class="course">高等数学下</p>
+                        <p class="teacher">陈劲松</p>
+                        <p class="term">2016春</p>
+                    </a>
+                </div>
+                
+                 </div>
+            </div>
+            
+        </div>
+       
+        
+    </div>
+
+</body>
+<script>
+    //初始化AV
+    const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
+    const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
+    const region = 'cn';
+    
+    AV.init({ appId, appKey, region });
+    
+    //解析url获取值
+    function getQueryString(key){
+        var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+        var result = window.location.search.substr(1).match(reg);
+        return result?decodeURIComponent(result[2]):null;
+    }
+    var para = getQueryString('para0')
+    console.log(para)
+
+    // handlebars context
+    var context = {
+        questions: []
+    };
+
+    function findQuestion(string){
+        var query = new AV.Query('Question');
+        query.contains('title', string)
+       
+        console.log(string)
+        query.find().then(function(results) {
+            console.log(results)
+            console.log(results.length)
+            if(results.length === 0 ){
+                window.location.href = 'noresult.html'
+                return
+            }
+            let resultNumber = results.length
+            let i = 0
+            results.forEach(function(result){
+                var questionTitle = result.get('title')
+                console.log(questionTitle)
+                var questionTime = result.get('time')
+                var answerNumber = result.get('answerNumber')
+                //得到ID去找相应问题的答案
+                var questionID = result.id
+                console.log(questionID)
+                var answerAuthorName, answerContent, thumbUp
+             
+                //查询答案
+
+                var query1 = new AV.Query('Answer')
+                var questions = AV.Object.createWithoutData('Question', questionID)
+                query1.equalTo('dependent', questions)
+                query1.include('dependent')
+                query1.first().then(function(results){
+                    console.log(results)
+                    i++
+                    if(!results){
+                        return;
+                        context.questions.push({
+                        questionID,
+                        questionTitle,
+                        questionTime,
+                        answerNumber
+    
+                    });
+                        makeHtml(context)
+                        return
+                    }
+               
+                    answerAuthorName = results.get('authorName')
+                    answerContent = results.get('content')
+                    thumbUp = results.get('thumbUp')
+                
+                    context.questions.push({
+                        questionID,
+                        questionTitle,
+                        questionTime,
+                        answerNumber,
+                        answerAuthorName,
+                        answerContent,
+                        thumbUp
+                    });
+
+                    if(i === resultNumber){
+                        return context.questions
+                    }
+                    return undefined
+                    
+
+                }, function(error){
+                    console.log('error')
+                }).then(function(context){
+                   if(context){
+                       makeHtml(context)
+
+
+                   }
+
+
+                })
+                
+            })
+
+            
+        }).catch(function(err){
+        //处理 err
+        });
+
+    }
+
+    findQuestion(para)
+
+    //将搜索结果展示在页面中
+    function makeHtml(context){
+        let newStr = ''
+        for(let i = 0; i < context.length; i++){
+            newStr += 
+            `
+            <li>
+                <div class="title">
+                    <a href="solvedQuestionDetail.html?id=${context[i].questionID}" >
+                        ${context[i].questionTitle}
+                    </a>
+                </div>
+                <div class="details">
+                    <div class="author-line">
+                        <a href="#" class="author">${context[i].answerAuthorName}</a>
+                        <i class="icon-star">优秀回答者</i>
+                        <span class="topics">2016春 高数下童丽珍老师小组成员</span>
+                    </div>
+                    <div class="answer">
+                        ${context[i].answerContent}
+                    </div>
+                    <div class="actions">
+                        <span class="time">${context[i].questionTime}</span>
+                        <span class="answerNumber">${context[i].answerNumber}个回答</span>
+                        <span class="thumbs-up"><i class="icon-thumbs-up"></i>${context[i].thumbUp}</span>
+                    </div>
+                </div>
+            </li>
+            `
+
+        }
+
+        $('.questions').append(newStr)
+
+
+    }
+
+    //在本页面的搜索框进行搜索
+
+    $('#search-bar').keydown(function(e){
+        if(e.which == 13){
+            e.preventDefault()
+            searchUrl()
+            var para = getQueryString('para0')
+            findQuestion(para)
+           
+        }
+
+    })
+
+    $('#search').on('click', function(e){
+        e.preventDefault()
+        searchUrl()
+        var para = getQueryString('para0')
+        findQuestion(para)
+    })
+
+    function searchUrl(){
+        var url = 'searchResult2.html?'
+        var searchContent = $('#search-bar').val()
+        var parasArray = searchContent.split(' ')
+        for(let i = 0; i < parasArray.length; i++){
+            url += 'para'+ i + '=' +  parasArray[i] 
+            if(i<parasArray.length-1){
+                url += '&'
+            }
+        }
+        
+        window.location.href = url
+
+    }
+
+</script>
+</html>
