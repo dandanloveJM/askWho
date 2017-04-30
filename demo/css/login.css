@@ -29,6 +29,17 @@
 	height: 160px;
 	background-position: center center;
 	position: relative;
+	text-align: center;
+}
+.title> a {
+	text-decoration: none;
+	display: inline-block;
+	color: #0f88eb;
+	font-size: 38px;
+	letter-spacing: 5px;
+	position: absolute;
+	top: 64px;
+	left: 165px;
 }
 .title h3 {
 	position: absolute;

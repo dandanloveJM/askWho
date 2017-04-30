@@ -1,11 +1,12 @@
  //初始化AV
+    "use strict"
     const appId = 'YoUKvGrpeG6iQlrkqeTqrgQU-gzGzoHsz';
     const appKey = 'rvYorKtJCDBTL5bmbiINj99c';
     const region = 'cn';
     
     AV.init({ appId, appKey, region });
 
-    let inputFlag = false
+    var inputFlag = false
     $('input').on('focus', function(e){
         if(inputFlag){
             return 
